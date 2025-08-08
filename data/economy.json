@@ -1,0 +1,8 @@
+﻿{
+  "coins_per_round": 300,
+  "roll_cost": 20,
+  "starting_hp": 50,
+  "card_costs": { "common": 100, "epic": 200, "legendary": 300 },
+  "level_thresholds": [4, 10, 20, 40],
+  "rarity_points": { "common": 1, "epic": 2, "legendary": 3 }
+}

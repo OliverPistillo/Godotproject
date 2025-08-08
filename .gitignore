@@ -1,0 +1,109 @@
+# Godot-specific ignores
+.godot/
+.import/
+
+# Godot auto-generated files
+*.translation
+*.cfg
+override.cfg
+
+# Mono-specific ignores (se usi C#)
+.mono/
+data_*/
+mono_crash.*.json
+
+# Build results
+[Bb]uild/
+[Bb]uilds/
+[Ee]xports/
+.export/
+
+# File temporanei
+*.tmp
+*.temp
+*.log
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Windows
+*.exe
+*.msi
+*.bat
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Crash logs
+crashes/
+*.stackdump
+
+# Profiler data
+.prof
+
+# Android
+.gradle/
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+
+# iOS
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+
+# Xcode
+build/
+DerivedData/
+*.hmap
+*.ipa
+
+# File specifici del tuo progetto
+ancoranonso.docx
+batD982.tmp
+mai457.tmp
+mai740C.tmp
+mai7FFE.tmp
+maiD395.tmp
+
+
+# Escludere eseguibili di installazione
+ere_free_easeus.exe
+screen_recorder_install_*.exe
+WRCFree_*.exe

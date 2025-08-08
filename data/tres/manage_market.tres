@@ -1,0 +1,28 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bm7wyaauvjvg"]
+
+[ext_resource type="FontFile" uid="uid://dyl8h8hu2j3bc" path="res://data/Font/Kenney Future.ttf" id="1_vfv1h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i1som"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.207843, 0.501961, 0.8, 1)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(0.0352941, 0.231373, 0.427451, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 10
+expand_margin_left = 2.0
+
+[resource]
+Button/colors/font_color = Color(0.987269, 0.88233, 0.0847762, 1)
+Button/font_sizes/font_size = 18
+Button/fonts/font = ExtResource("1_vfv1h")
+Button/styles/normal = SubResource("StyleBoxFlat_i1som")

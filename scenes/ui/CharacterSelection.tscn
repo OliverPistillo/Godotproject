@@ -1,0 +1,26 @@
+﻿[gd_scene load_steps=3 format=3]
+
+[ext_resource path="res://scripts/characters/CharacterSelection.gd" type="Script" id=1]
+
+[node name="CharacterSelection" type="Control"]
+script = ExtResource("1")
+layout_mode = 2
+
+[node name="HeroGrid" type="GridContainer" parent="."]
+columns = 3
+layout_mode = 2
+
+[node name="HeroInfo" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HeroName" type="Label" parent="HeroInfo"]
+layout_mode = 2
+text = "Seleziona un eroe"
+
+[node name="HeroStats" type="Label" parent="HeroInfo"]
+layout_mode = 2
+text = "Statistiche"
+
+[node name="SelectButton" type="Button" parent="HeroInfo"]
+layout_mode = 2
+text = "Seleziona"

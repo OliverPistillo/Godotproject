@@ -1,0 +1,16 @@
+	survival	
+	injure	
+	ulti	
+		
+	regen	
+	attack	
+	crit	
+	health	
+	poison	
+	frost	
+	fury	
+	guardian	 
+	evade	
+	shield	
+		
+	anything	

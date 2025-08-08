@@ -1,0 +1,253 @@
+[gd_scene load_steps=15 format=3 uid="uid://c2w4rcq6yd64y"]
+
+[ext_resource type="Texture2D" uid="uid://coaq6u2y0f1gv" path="res://imma/dreamy-rainbow-countryside_23-2151625099.jpg" id="2_eh4k4"]
+[ext_resource type="Texture2D" uid="uid://clcle6il26b7j" path="res://heroes/hero1.png" id="2_f02k1"]
+[ext_resource type="Texture2D" uid="uid://c50c5x04bvnsq" path="res://imma/icon border/sheet_border.png" id="3_s3i27"]
+[ext_resource type="Texture2D" uid="uid://dggy23qwr3q0b" path="res://heroes/hero2.png" id="4_1qg2b"]
+[ext_resource type="Texture2D" uid="uid://cu5y3ug506fmk" path="res://heroes/hero3.png" id="5_4vthr"]
+
+[sub_resource type="GDScript" id="GDScript_cvow1"]
+script/source = "extends Control
+
+# Lista degli eroi
+var all_heroes = [
+	{\"name\": \"Hero1\", \"sprite\": preload(\"res://heroes/hero1.png\")},
+	{\"name\": \"Hero2\", \"sprite\": preload(\"res://heroes/hero2.png\")},
+	{\"name\": \"Hero3\", \"sprite\": preload(\"res://heroes/hero3.png\")},
+	{\"name\": \"Hero4\", \"sprite\": preload(\"res://heroes/hero4.png\")},
+	{\"name\": \"Hero5\", \"sprite\": preload(\"res://heroes/hero5.png\")},
+	{\"name\": \"Hero6\", \"sprite\": preload(\"res://heroes/hero6.png\")},
+	{\"name\": \"Hero7\", \"sprite\": preload(\"res://heroes/hero7.png\")},
+	{\"name\": \"Hero8\", \"sprite\": preload(\"res://heroes/hero8.png\")},
+	{\"name\": \"Hero9\", \"sprite\": preload(\"res://heroes/hero9.png\")},
+	{\"name\": \"Hero10\", \"sprite\": preload(\"res://heroes/hero10.png\")}
+]
+
+var selected_heroes = []
+var reroll_used = false
+var countdown_time = 20  # Imposta i secondi del countdown
+
+func _ready():
+	# Mostra 3 eroi casuali all'avvio
+	reroll_heroes()
+
+	# Collega il pulsante per il rimescolamento
+	$RerollButton.connect(\"pressed\", Callable(self, \"_on_RerollButton_pressed\"))
+
+	# Imposta il testo iniziale del countdown
+	$CountdownLabel.text = str(countdown_time)
+
+	# Avvia il timer per il countdown
+	$CountdownTimer.connect(\"timeout\", Callable(self, \"_on_CountdownTimer_timeout\"))
+	$CountdownTimer.start()
+
+	# Connetti i pulsanti di selezione degli eroi
+	for i in range(3):
+		var hero_node = $HeroContainer.get_child(i)
+		if hero_node is TextureButton:
+			hero_node.connect(\"pressed\", Callable(self, \"_on_HeroButton_pressed\").bind(i))
+
+func reroll_heroes():
+	# Seleziona 3 eroi casualmente
+	selected_heroes = []
+
+	while selected_heroes.size() < 3:
+		var hero = all_heroes[randi() % all_heroes.size()]
+
+		if hero not in selected_heroes:
+			selected_heroes.append(hero)
+
+	# Visualizza gli eroi selezionati
+	for i in range(3):
+		var hero_node = $HeroContainer.get_child(i)
+
+		# Verifica se il nodo è un TextureRect o TextureButton
+		if hero_node is TextureRect:
+			hero_node.texture = selected_heroes[i][\"sprite\"]
+		elif hero_node is TextureButton:
+			hero_node.texture_normal = selected_heroes[i][\"sprite\"]
+		else:
+			print(\"Nodo non supportato per la visualizzazione dell'eroe\")
+
+func _on_RerollButton_pressed():
+	# Rimescola solo se non è già stato fatto
+	if not reroll_used:
+		reroll_heroes()
+		reroll_used = true
+		$RerollButton.disabled = true  # Disabilita il pulsante
+
+func _on_HeroButton_pressed(hero_index):
+	# Segna l'eroe selezionato
+	selected_heroes = [all_heroes[hero_index]]
+
+	# Passa alla scena successiva
+	get_tree().change_scene_to_file(\"res://battle_scene.tscn\")
+
+func _on_CountdownTimer_timeout():
+	# Riduci il tempo del countdown di 1 secondo
+	countdown_time -= 1
+	$CountdownLabel.text = str(countdown_time)
+
+	# Se il countdown arriva a 0, cambia scena
+	if countdown_time <= 0:
+		get_tree().change_scene_to_file(\"res://battle_scene.tscn\")
+	else:
+		# Riavvia il timer per continuare il countdown
+		$CountdownTimer.start()
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atq2i"]
+atlas = ExtResource("3_s3i27")
+region = Rect2(0, 0, 611, 885)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7kwn"]
+atlas = ExtResource("3_s3i27")
+region = Rect2(611, 0, 611, 885)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t355l"]
+atlas = ExtResource("3_s3i27")
+region = Rect2(1222, 0, 611, 885)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24fqa"]
+atlas = ExtResource("3_s3i27")
+region = Rect2(0, 885, 611, 885)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tldyi"]
+atlas = ExtResource("3_s3i27")
+region = Rect2(611, 885, 611, 885)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmdch"]
+atlas = ExtResource("3_s3i27")
+region = Rect2(1222, 885, 611, 885)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r7xll"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atq2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7kwn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t355l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24fqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tldyi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmdch")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tj7i1"]
+font_size = 40
+font_color = Color(0.259996, 0.881324, 5.39064e-06, 1)
+outline_size = 15
+outline_color = Color(0, 0, 1, 1)
+
+[node name="CharacterSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_cvow1")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_eh4k4")
+
+[node name="HeroContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_left = -115.0
+offset_right = 1942.0
+offset_bottom = 800.0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(493, 180)
+alignment = 1
+
+[node name="Hero1" type="TextureButton" parent="HeroContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_f02k1")
+stretch_mode = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HeroContainer/Hero1"]
+position = Vector2(264, 400)
+scale = Vector2(1.2, 1.15)
+sprite_frames = SubResource("SpriteFrames_r7xll")
+
+[node name="MarginContainer" type="MarginContainer" parent="HeroContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Hero2" type="TextureButton" parent="HeroContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+size_flags_stretch_ratio = 6.27
+texture_normal = ExtResource("4_1qg2b")
+stretch_mode = 5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HeroContainer/Hero2"]
+position = Vector2(279.3, 406.943)
+scale = Vector2(1.2, 1.16823)
+sprite_frames = SubResource("SpriteFrames_r7xll")
+frame = 5
+
+[node name="MarginContainer2" type="MarginContainer" parent="HeroContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Hero3" type="TextureButton" parent="HeroContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 5.37
+texture_normal = ExtResource("5_4vthr")
+stretch_mode = 6
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HeroContainer/Hero3"]
+position = Vector2(272.499, 397.075)
+scale = Vector2(1.2, 1.16853)
+sprite_frames = SubResource("SpriteFrames_r7xll")
+
+[node name="RerollButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 564.0
+offset_right = 711.0
+offset_bottom = 624.0
+text = "REROLL"
+
+[node name="CountdownLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 583.0
+offset_top = -8.0
+offset_right = 723.0
+offset_bottom = 74.0
+text = "20"
+label_settings = SubResource("LabelSettings_tj7i1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CountdownTimer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="CountdownTimer" to="." method="_on_countdown_timer_timeout"]

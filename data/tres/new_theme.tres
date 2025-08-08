@@ -1,0 +1,21 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bmxqgwvobwukp"]
+
+[ext_resource type="StyleBox" uid="uid://d3fsasg3x3nce" path="res://data/tres/button_market.tres" id="1_fhva7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3cc34"]
+bg_color = Color(0.541432, 0.418925, 0.252359, 1)
+border_width_left = 15
+border_width_top = 10
+border_width_right = 15
+border_width_bottom = 10
+border_color = Color(0.309228, 0.238333, 0.144087, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+shadow_color = Color(0.164568, 0.461263, 0.72671, 0.6)
+shadow_size = 5
+shadow_offset = Vector2(0, -2)
+
+[resource]
+Button/styles/normal = ExtResource("1_fhva7")
+Button/styles/pressed = SubResource("StyleBoxFlat_3cc34")

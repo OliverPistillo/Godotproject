@@ -1,0 +1,17 @@
+﻿{
+  "active_count": 8,
+  "all": [
+    { "key": "Assault",  "icon": "res://assets/logos/branches/assault.png",  "order": 0 },
+    { "key": "Guardian", "icon": "res://assets/logos/branches/guardian.png", "order": 0 },
+    { "key": "Healing",  "icon": "res://assets/logos/branches/healing.png",  "order": 0 },
+    { "key": "Ice",      "icon": "res://assets/logos/branches/ice.png",      "order": 0 },
+    { "key": "Toxin",    "icon": "res://assets/logos/branches/toxin.png",    "order": 0 },
+    { "key": "Power",    "icon": "res://assets/logos/branches/power.png",    "order": 0 },
+    { "key": "Precision","icon": "res://assets/logos/branches/precision.png","order": 0 },
+    { "key": "Rage",     "icon": "res://assets/logos/branches/rage.png",     "order": 0 },
+    { "key": "Dodge",    "icon": "res://assets/logos/branches/dodge.png",    "order": 0 },
+    { "key": "Essence",  "icon": "res://assets/logos/branches/essence.png",  "order": 0 },
+    { "key": "Wound",    "icon": "res://assets/logos/branches/wound.png",    "order": 0 },
+    { "key": "Shield",   "icon": "res://assets/logos/branches/shield.png",   "order": 0 }
+  ]
+}

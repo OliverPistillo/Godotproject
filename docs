@@ -1,0 +1,91 @@
+Economy:
+Income :
+
+The income represent the passive gold you will receive every round
+
+You get 250 gold after each combat
+
+Interest :
+
+You will get an extra 10 gold after each combat for every 100gold you have (max . 100gold)
+
+Ex: you have 500 gold => you will get 250 + 50 = 350
+
+Your goal is to get to 1000 Gold to maximise you interest
+
+Victory :
+
+A victory will grantyou 50 Gold.
+
+You will get an extra 20 gold for each win streak (consecutive wins) you have (max 100gold)
+
+EX: you have 1000 gold and won 4 round in a row => you will get 250 (base) + 100 (interest) + 50 (vicory) + 4*20 (4 wins streak) = 480g
+
+Defeat :
+
+A defeat will grant you 15 gold for each lost point of life
+
+A opposite to win streak you can lose streak and you will get 15 gold for each lose streak (max 60)
+
+Ex : you have 1000 gold and lost 3 rounds in a row and last combat you lost 8 hp => you will get 250 (base) + 100 (interest) + 120 (8 (hp lost)*15) + 45 (3 (lose streak)*15) = 515 gold
+
+Cards :
+Each card will add 1/2/3 level to the branch depending on the rarity of the card. (Ex :normal regen card will put 1 point in regen branch, legendary fury card will put 3 point in fury branch).
+
+Card can have 2 branches.
+
+There are 3 type of cards:
+
+Normal cards:
+
+Cost 100gold
+
+add 1 point to the branch
+
+Can be dropped from any branch level
+
+There are 72 card for each branch with ~93.5% drop rate
+
+Epic card
+
+Cost 200gold
+
+Add 2 points to the branch
+
+Can be dropped if the branch is already level 10+
+
+There are 3 card for each branch with ~3.9% drop rate
+
+Legendary cards
+
+Cost 300gold
+
+Add 4 points to the branch
+
+Can be dropped if the branch is already level 20+
+
+There are 2 cards for each branch with ~2.6% drop rate
+
+Branches :
+As said before, buying cad will give you points in the card branch.
+
+Branches have passive ability (Ex: Ultimate branch passive are ultimate damage and mana regen)
+
+Thoses passive have 4 levels
+
+each level will boost the passive
+
+Branches level up treshold are 4/10/20/40
+
+Tips :
+You want to stay above 1000gold to max your interest
+
+The faster you reach level 20 on a branch, more chance to get a legendary card for that branch.
+
+Play on the counter card
+
+You have many "branch" immunity card (Ex : poison immunity) that will decrease damage from this branch
+
+Some branches are natural counter (Ex : fury counter frost and vise-versa)
+
+Check the remaining pool for each branch often, if many people are buying the same branch oyu need to adapt (play counter branch, level up fast to get legendary, etc...)

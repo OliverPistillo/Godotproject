@@ -1,0 +1,164 @@
+{
+    "heroes": {
+        "Fireheart": {
+            "max_health": 1200,
+            "mana_regen": 9,
+            "max_mana": 100,
+            "attack_damage": 24,
+            "attack_speed": 1.04,
+            "crit_chance": 18,
+            "dodge_chance": 12,
+            "branch": "rage"
+        },
+        "Frostfang": {
+            "max_health": 1000,
+            "mana_regen": 9,
+            "max_mana": 100,
+            "attack_damage": 25,
+            "attack_speed": 1.04,
+            "crit_chance": 15,
+            "dodge_chance": 13,
+            "branch": "ice"
+        },
+        "Bloodthorn": {
+            "max_health": 1150,
+            "mana_regen": 9,
+            "max_mana": 100,
+            "attack_damage": 26,
+            "attack_speed": 0.94,
+            "crit_chance": 16,
+            "dodge_chance": 12,
+            "branch": "healing"
+        },
+        "Stormblade": {
+            "max_health": 1100,
+            "mana_regen": 9,
+            "max_mana": 100,
+            "attack_damage": 22,
+            "attack_speed": 1.11,
+            "crit_chance": 15,
+            "dodge_chance": 12,
+            "branch": "wound"
+        },
+        "Duskwhisper": {
+            "max_health": 1200,
+            "mana_regen": 10,
+            "max_mana": 100,
+            "attack_damage": 26,
+            "attack_speed": 0.89,
+            "crit_chance": 12,
+            "dodge_chance": 14,
+            "branch": "toxin"
+        },
+        "Windrider": {
+            "max_health": 1000,
+            "mana_regen": 11,
+            "max_mana": 100,
+            "attack_damage": 26,
+            "attack_speed": 1.04,
+            "crit_chance": 20,
+            "dodge_chance": 11,
+            "branch": "precision"
+        },
+        "Darkbane": {
+            "max_health": 1000,
+            "mana_regen": 9,
+            "max_mana": 100,
+            "attack_damage": 25,
+            "attack_speed": 0.95,
+            "crit_chance": 21,
+            "dodge_chance": 7,
+            "branch": "assault"
+        },
+        "Nightshade": {
+            "max_health": 1000,
+            "mana_regen": 11,
+            "max_mana": 100,
+            "attack_damage": 22,
+            "attack_speed": 1.04,
+            "crit_chance": 8,
+            "dodge_chance": 20,
+            "branch": "dodge; wound"
+        },
+        "Emberforge": {
+            "max_health": 1100,
+            "mana_regen": 9,
+            "max_mana": 100,
+            "attack_damage": 27,
+            "attack_speed": 0.87,
+            "crit_chance": 14,
+            "dodge_chance": 16,
+            "branch": "dodge; toxin"
+        },
+        "Ironfist": {
+            "max_health": 1200,
+            "mana_regen": 10,
+            "max_mana": 100,
+            "attack_damage": 24,
+            "attack_speed": 1.04,
+            "crit_chance": 22,
+            "dodge_chance": 7,
+            "branch": "precision; power"
+        },
+        "Darion Starseer": {
+            "max_health": 1250,
+            "mana_regen": 11,
+            "max_mana": 100,
+            "attack_damage": 25,
+            "attack_speed": 1.04,
+            "crit_chance": 18,
+            "dodge_chance": 7,
+            "branch": "guardian"
+        },
+        "Shadowflame": {
+            "max_health": 1100,
+            "mana_regen": 12,
+            "max_mana": 100,
+            "attack_damage": 24,
+            "attack_speed": 1.11,
+            "crit_chance": 18,
+            "dodge_chance": 12,
+            "branch": "assault; essence"
+        },
+        "Steelbane": {
+            "max_health": 1000,
+            "mana_regen": 9,
+            "max_mana": 100,
+            "attack_damage": 27,
+            "attack_speed": 1.11,
+            "crit_chance": 17,
+            "dodge_chance": 10,
+            "branch": "precision; assault"
+        },
+        "Voidwalker": {
+            "max_health": 1200,
+            "mana_regen": 10,
+            "max_mana": 100,
+            "attack_damage": 22,
+            "attack_speed": 1.04,
+            "crit_chance": 11,
+            "dodge_chance": 18,
+            "branch": "dodge"
+        },
+        "Blackthorn": {
+            "max_health": 1200,
+            "mana_regen": 10,
+            "max_mana": 100,
+            "attack_damage": 22,
+            "attack_speed": 1.16,
+            "crit_chance": 16,
+            "dodge_chance": 13,
+            "branch": "shield"
+        },
+        "Skydancer": {
+            "max_health": 1000,
+            "mana_regen": 12,
+            "max_mana": 100,
+            "attack_damage": 25,
+            "attack_speed": 1.11,
+            "crit_chance": 15,
+            "dodge_chance": 11,
+            "branch": "essence"
+        }
+    }
+}

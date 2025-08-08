@@ -1,0 +1,14 @@
+{
+    "Wound": "res://logos/branches/wound.png",
+    "Essence": "res://logos/branches/essence.png",
+    "Rage": "res://logos/branches/rage.png",
+    "Ice": "res://logos/branches/ice.png",
+    "Toxin": "res://logos/branches/toxin.png",
+    "Shield": "res://logos/branches/shield.png",
+    "Healing": "res://logos/branches/healing.png",
+    "Power": "res://logos/branches/power.png",
+    "Precision": "res://logos/branches/precision.png",
+    "Guardian": "res://logos/branches/guardian.png",
+    "Assault": "res://logos/branches/assault.png",
+    "Dodge": "res://logos/branches/dodge.png"
+}

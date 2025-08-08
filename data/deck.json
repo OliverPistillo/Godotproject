@@ -1,0 +1,6 @@
+﻿{
+  "cards": [
+    { "id": "assault_slash", "name": "Assault Slash", "branch": "Assault", "rarity": "common", "cost": 100, "effects": {"atk_pct": 5} },
+    { "id": "ice_spike", "name": "Ice Spike", "branch": "Ice", "rarity": "epic", "cost": 200, "effects": {"slow": 20} }
+  ]
+}

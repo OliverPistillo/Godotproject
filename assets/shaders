@@ -1,0 +1,29 @@
+shader_type canvas_item;
+
+uniform vec4 outline_color : hint_color = vec4(0.0, 0.0, 0.0, 1.0); // Colore del bordo
+uniform float outline_thickness = 3.0; // Spessore del bordo
+
+void fragment() {
+    vec2 uv = FRAGCOORD.xy / TEXTURE_PIXEL_SIZE;
+    vec4 original_color = texture(TEXTURE, UV);
+    float alpha = original_color.a;
+
+    if (alpha < 0.1) {
+        vec4 outline = vec4(0.0);
+        for (int x = -1; x <= 1; x++) {
+            for (int y = -1; y <= 1; y++) {
+                if (x != 0 || y != 0) {
+                    vec2 offset_uv = UV + vec2(float(x), float(y)) * outline_thickness / vec2(TEXTURE_PIXEL_SIZE);
+                    outline = max(outline, texture(TEXTURE, offset_uv));
+                }
+            }
+        }
+        if (outline.a > 0.1) {
+            COLOR = outline_color;
+        } else {
+            discard;
+        }
+    } else {
+        COLOR = original_color;
+    }
+}
