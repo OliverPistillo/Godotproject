@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://djq30rbw5leoe"]
+
+[sub_resource type="GDScript" id="GDScript_afvoi"]
+script/source = "extends Control
+
+func _ready():
+	pass
+
+
+func _on_play_pressed():
+	get_tree().change_scene_to_file(\"res://character_selection.tscn\")
+"
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_afvoi")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1279.0
+offset_bottom = 719.0
+expand_mode = 2
+
+[node name="Play" type="Button" parent="Background"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 447.0
+offset_right = 4016.0
+offset_bottom = 4455.0
+scale = Vector2(0.1, 0.1)
+flat = true
+
+[node name="Options" type="Button" parent="Background"]
+layout_mode = 0
+offset_left = 1183.0
+offset_right = 1636.0
+offset_bottom = 484.0
+scale = Vector2(0.2, 0.2)
+flat = true
+
+[connection signal="pressed" from="Background/Play" to="." method="_on_play_pressed"]

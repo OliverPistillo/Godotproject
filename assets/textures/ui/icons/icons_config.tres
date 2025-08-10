@@ -1,0 +1,67 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Texture2D" path="res://icon.svg" id="1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_coin"]
+atlas = ExtResource("1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_health"]
+atlas = ExtResource("1")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mana"]
+atlas = ExtResource("1")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_attack"]
+atlas = ExtResource("1")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_defense"]
+atlas = ExtResource("1")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_speed"]
+atlas = ExtResource("1")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crit"]
+atlas = ExtResource("1")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dodge"]
+atlas = ExtResource("1")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_star"]
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_star"]
+colors = PackedColorArray(0.9, 0.7, 0.2, 1, 1, 0.9, 0.4, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lock"]
+width = 32
+height = 32
+
+[sub_resource type="Gradient" id="Gradient_lock"]
+colors = PackedColorArray(0.3, 0.3, 0.4, 1, 0.5, 0.5, 0.6, 1)
+
+[resource]
+script = ExtResource("1")
+icons = {
+  "coin": SubResource("AtlasTexture_coin"),
+  "health": SubResource("AtlasTexture_health"),
+  "mana": SubResource("AtlasTexture_mana"),
+  "attack": SubResource("AtlasTexture_attack"),
+  "defense": SubResource("AtlasTexture_defense"),
+  "speed": SubResource("AtlasTexture_speed"),
+  "crit": SubResource("AtlasTexture_crit"),
+  "dodge": SubResource("AtlasTexture_dodge"),
+  "star": SubResource("GradientTexture2D_star"),
+  "lock": SubResource("GradientTexture2D_lock")
+}

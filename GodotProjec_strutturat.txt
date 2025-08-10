@@ -1,0 +1,123 @@
+GodotProject/
+│   .gitignore
+│   icon.svg
+│   project.godot
+│   README.md
+│
+├───assets
+│   ├───audio
+│   │   ├───music
+│   │   └───sfx
+│   ├───fonts
+│   │       Kenney Future Narrow.ttf
+│   │
+│   ├───models
+│   │   ├───arenas
+│   │   │       arena.glb
+│   │   │
+│   │   ├───cards
+│   │   │       card3d.glb
+│   │   │
+│   │   └───heroes
+│   │           mage.glb
+│   │           warrior.glb
+│   │
+│   └───textures
+│       ├───cards
+│       │   ├───backgrounds
+│       │   │       background_epic.png
+│       │   │       background_legendary.png
+│       │   │       background_normal.png
+│       │   │
+│       │   └───icons
+│       │       └───branches
+│       │               assault.png
+│       │               ban_assault.png
+│       │               ban_dodge.png
+│       │               ban_essence.png
+│       │               ban_guardian.png
+│       │               ban_healing.png
+│       │               ban_ice.png
+│       │               ban_power.png
+│       │               ban_precision.png
+│       │               ban_rage.png
+│       │               ban_shield.png
+│       │               ban_toxin.png
+│       │               ban_wound.png
+│       │               dodge.png
+│       │               essence.png
+│       │               guardian.png
+│       │               healing.png
+│       │               ice.png
+│       │               power.png
+│       │               precision.png
+│       │               rage.png
+│       │               shield.png
+│       │               toxin.png
+│       │               wound.png
+│       │
+│       ├───heroes
+│       │   ├───portraits
+│       │   └───sprites
+│       └───ui
+│           ├───buttons
+│           ├───icons
+│           └───panels
+├───data
+│       branch_logos.json
+│       deck.json
+│       economy.json
+│       heroes.json
+│       heroes_converted.json
+│
+├───resources
+│   ├───materials
+│   │       hero_material.tres
+│   │
+│   └───themes
+│           default_theme.tres
+│
+├───scenes
+│   ├───entities
+│   │       card3d.tscn
+│   │       hero3d.tscn
+│   │
+│   ├───game
+│   │       arena.tscn
+│   │       battle_scene.tscn
+│   │
+│   ├───main
+│   │       main.tscn
+│   │
+│   └───ui
+│           branch_panel.tscn
+│           character_selection.tscn
+│           main_menu.tscn
+│           market.tscn
+│
+└───scripts
+    ├───autoload
+    │       CardSystem.gd
+    │       economy_manager.gd
+    │       game_manager.gd
+    │       hero_stats.gd
+    │
+    ├───entities
+    │       card.gd
+    │       hero3d.gd
+    │
+    ├───gameplay
+    │       battle_manager.gd
+    │       duel_phase.gd
+    │       preparation_phase.gd
+    │       round_manager.gd
+    │
+    ├───ui
+    │       branch_panel.gd
+    │       character_selection.gd
+    │       main_menu.gd
+    │       market.gd
+    │
+    └───utils
+            constants.gd
+            helpers.gd

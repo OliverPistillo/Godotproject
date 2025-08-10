@@ -1,0 +1,290 @@
+[gd_scene load_steps=8 format=3 uid="uid://market_scene"]
+
+[ext_resource type="Script" path="res://scripts/ui/market.gd" id="1"]
+[ext_resource type="Theme" path="res://resources/themes/default_theme.tres" id="2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1"]
+bg_color = Color(0.1, 0.1, 0.15, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.3, 0.4, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2"]
+bg_color = Color(0.15, 0.15, 0.2, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3"]
+bg_color = Color(0.2, 0.3, 0.5, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4"]
+bg_color = Color(0.3, 0.4, 0.6, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Animation" id="Animation_1"]
+resource_name = "market_open"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarketPanel:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+
+[node name="Market" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.7)
+
+[node name="MarketPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -350.0
+offset_right = 500.0
+offset_bottom = 350.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarketPanel"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="TopBar" type="HBoxContainer" parent="MarketPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="MarketPanel/VBoxContainer/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "MARKET"
+horizontal_alignment = 1
+
+[node name="TimerContainer" type="HBoxContainer" parent="MarketPanel/VBoxContainer/TopBar"]
+layout_mode = 2
+
+[node name="TimerIcon" type="TextureRect" parent="MarketPanel/VBoxContainer/TopBar/TimerContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(32, 32)
+stretch_mode = 4
+
+[node name="TimerLabel" type="Label" parent="MarketPanel/VBoxContainer/TopBar/TimerContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "20"
+
+[node name="CoinContainer" type="HBoxContainer" parent="MarketPanel/VBoxContainer/TopBar"]
+layout_mode = 2
+
+[node name="CoinIcon" type="TextureRect" parent="MarketPanel/VBoxContainer/TopBar/CoinContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(32, 32)
+stretch_mode = 4
+
+[node name="CoinLabel" type="Label" parent="MarketPanel/VBoxContainer/TopBar/CoinContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.9, 0.7, 0.2, 1)
+text = "300"
+
+[node name="HSeparator" type="HSeparator" parent="MarketPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="CardContainer" type="HBoxContainer" parent="MarketPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Card1" type="PanelContainer" parent="MarketPanel/VBoxContainer/CardContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(250, 350)
+theme_override_styles/panel = SubResource("StyleBoxFlat_2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarketPanel/VBoxContainer/CardContainer/Card1"]
+layout_mode = 2
+
+[node name="CardName" type="Label" parent="MarketPanel/VBoxContainer/CardContainer/Card1/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Card Name"
+horizontal_alignment = 1
+
+[node name="CardImage" type="TextureRect" parent="MarketPanel/VBoxContainer/CardContainer/Card1/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 150)
+stretch_mode = 3
+
+[node name="CardEffect" type="RichTextLabel" parent="MarketPanel/VBoxContainer/CardContainer/Card1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 14
+text = "Card effect description"
+fit_content = true
+
+[node name="CardCost" type="Label" parent="MarketPanel/VBoxContainer/CardContainer/Card1/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.9, 0.7, 0.2, 1)
+text = "100 Coins"
+horizontal_alignment = 1
+
+[node name="Card2" type="PanelContainer" parent="MarketPanel/VBoxContainer/CardContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(250, 350)
+theme_override_styles/panel = SubResource("StyleBoxFlat_2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarketPanel/VBoxContainer/CardContainer/Card2"]
+layout_mode = 2
+
+[node name="CardName" type="Label" parent="MarketPanel/VBoxContainer/CardContainer/Card2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Card Name"
+horizontal_alignment = 1
+
+[node name="CardImage" type="TextureRect" parent="MarketPanel/VBoxContainer/CardContainer/Card2/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 150)
+stretch_mode = 3
+
+[node name="CardEffect" type="RichTextLabel" parent="MarketPanel/VBoxContainer/CardContainer/Card2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 14
+text = "Card effect description"
+fit_content = true
+
+[node name="CardCost" type="Label" parent="MarketPanel/VBoxContainer/CardContainer/Card2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.9, 0.7, 0.2, 1)
+text = "100 Coins"
+horizontal_alignment = 1
+
+[node name="Card3" type="PanelContainer" parent="MarketPanel/VBoxContainer/CardContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(250, 350)
+theme_override_styles/panel = SubResource("StyleBoxFlat_2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarketPanel/VBoxContainer/CardContainer/Card3"]
+layout_mode = 2
+
+[node name="CardName" type="Label" parent="MarketPanel/VBoxContainer/CardContainer/Card3/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Card Name"
+horizontal_alignment = 1
+
+[node name="CardImage" type="TextureRect" parent="MarketPanel/VBoxContainer/CardContainer/Card3/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 150)
+stretch_mode = 3
+
+[node name="CardEffect" type="RichTextLabel" parent="MarketPanel/VBoxContainer/CardContainer/Card3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 14
+text = "Card effect description"
+fit_content = true
+
+[node name="CardCost" type="Label" parent="MarketPanel/VBoxContainer/CardContainer/Card3/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.9, 0.7, 0.2, 1)
+text = "100 Coins"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="MarketPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Actions" type="HBoxContainer" parent="MarketPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="RollButton" type="Button" parent="MarketPanel/VBoxContainer/Actions"]
+layout_mode = 2
+custom_minimum_size = Vector2(150, 50)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4")
+text = "Reroll (20)"
+
+[node name="RandomButton" type="Button" parent="MarketPanel/VBoxContainer/Actions"]
+layout_mode = 2
+custom_minimum_size = Vector2(150, 50)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4")
+text = "Random (100)"
+
+[node name="LockButton" type="Button" parent="MarketPanel/VBoxContainer/Actions"]
+layout_mode = 2
+custom_minimum_size = Vector2(150, 50)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4")
+text = "Lock Cards"
+
+[node name="ReadyButton" type="Button" parent="MarketPanel/VBoxContainer/Actions"]
+layout_mode = 2
+custom_minimum_size = Vector2(150, 50)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4")
+text = "Ready"
+
+[node name="BranchPanel" type="VBoxContainer" parent="MarketPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("Animation_1")
+}

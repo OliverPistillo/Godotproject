@@ -1,0 +1,44 @@
+[gd_resource type="Resource" format=3]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_normal"]
+resource_name = "CardNormal"
+albedo_color = Color(0.3, 0.3, 0.7, 1)
+metallic = 0.2
+roughness = 0.8
+rim_enabled = true
+rim = 0.2
+rim_tint = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_epic"]
+resource_name = "CardEpic"
+albedo_color = Color(0.6, 0.3, 0.7, 1)
+emission_enabled = true
+emission = Color(0.3, 0.1, 0.3, 1)
+emission_energy = 0.3
+metallic = 0.3
+roughness = 0.6
+rim_enabled = true
+rim = 0.4
+rim_tint = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_legendary"]
+resource_name = "CardLegendary"
+albedo_color = Color(0.9, 0.7, 0.2, 1)
+emission_enabled = true
+emission = Color(0.5, 0.4, 0.1, 1)
+emission_energy = 0.5
+metallic = 0.8
+roughness = 0.2
+rim_enabled = true
+rim = 0.6
+rim_tint = 0.7
+clearcoat_enabled = true
+clearcoat_roughness = 0.3
+
+[resource]
+script = ExtResource("1")
+materials = {
+  "normal": SubResource("StandardMaterial3D_normal"),
+  "epic": SubResource("StandardMaterial3D_epic"),
+  "legendary": SubResource("StandardMaterial3D_legendary")
+}

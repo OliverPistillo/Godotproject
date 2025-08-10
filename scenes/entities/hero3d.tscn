@@ -1,0 +1,202 @@
+[gd_scene load_steps=14 format=3 uid="uid://hero3d_scene"]
+
+[ext_resource type="Script" path="res://scripts/entities/hero3d.gd" id="1"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1"]
+height = 2.0
+radius = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1"]
+albedo_color = Color(0.8, 0.8, 0.9, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1"]
+height = 2.0
+radius = 0.5
+
+[sub_resource type="Animation" id="Animation_idle"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.1, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_attack"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.3, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.3), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_death"]
+resource_name = "death"
+length = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 1.57)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_victory"]
+resource_name = "victory"
+length = 1.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.5, 0), Vector3(0, 0, 0), Vector3(0, 0.5, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1"]
+_data = {
+"attack": SubResource("Animation_attack"),
+"death": SubResource("Animation_death"),
+"idle": SubResource("Animation_idle"),
+"victory": SubResource("Animation_victory")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1"]
+viewport_path = NodePath("HPBar3D/SubViewport")
+
+[sub_resource type="Gradient" id="Gradient_1"]
+colors = PackedColorArray(0.8, 0.2, 0.2, 1, 0.2, 0.8, 0.2, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1"]
+gradient = SubResource("Gradient_1")
+width = 100
+height = 10
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1"]
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 1.5
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
+scale_min = 0.1
+scale_max = 0.3
+color = Color(0.9, 0.7, 0.2, 0.6)
+
+[node name="Hero3D" type="Node3D"]
+script = ExtResource("1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_1")
+surface_material_override/0 = SubResource("StandardMaterial3D_1")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1")
+}
+autoplay = "idle"
+
+[node name="HPBar3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_1")
+
+[node name="SubViewport" type="SubViewport" parent="HPBar3D"]
+transparent_bg = true
+size = Vector2i(200, 40)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HPBar3D/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 2
+
+[node name="HPBar" type="ProgressBar" parent="HPBar3D/SubViewport/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 15)
+max_value = 1200.0
+value = 1200.0
+show_percentage = false
+
+[node name="ManaBar" type="ProgressBar" parent="HPBar3D/SubViewport/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 10)
+max_value = 100.0
+show_percentage = false
+
+[node name="NameLabel3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+billboard = 1
+text = "Hero Name"
+font_size = 24
+
+[node name="EffectsContainer" type="Node3D" parent="."]
+
+[node name="DamageNumbers" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Particles" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 20
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_1")
+draw_pass_1 = SubResource("CapsuleMesh_1")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+light_energy = 0.5
+omni_range = 5.0

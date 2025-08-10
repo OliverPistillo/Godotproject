@@ -1,0 +1,236 @@
+[gd_scene load_steps=10 format=3 uid="uid://battle_scene_complete"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/preparation_phase.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://market_scene" path="res://scenes/ui/market.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://branch_panel_scene" path="res://scenes/ui/branch_panel.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://hero3d_scene" path="res://scenes/entities/hero3d.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://arena_scene" path="res://scenes/game/arena.tscn" id="5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1"]
+bg_color = Color(0.2, 0.2, 0.3, 0.8)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2"]
+bg_color = Color(0.8, 0.2, 0.2, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3"]
+bg_color = Color(0.2, 0.4, 0.8, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="Theme" id="Theme_1"]
+default_font_size = 16
+
+[node name="BattleScene" type="Node3D"]
+script = ExtResource("1")
+preparation_time = 20
+
+[node name="Arena" parent="." instance=ExtResource("5")]
+
+[node name="PlayerHero" parent="." instance=ExtResource("4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="EnemyHero" parent="." instance=ExtResource("4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="CameraPivot" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.866, 0.5, 0, -0.5, 0.866, 0, 6, 10)
+fov = 60
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = SubResource("Theme_1")
+
+[node name="TopBar" type="PanelContainer" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 60.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/HUD/TopBar"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="RoundContainer" type="VBoxContainer" parent="CanvasLayer/HUD/TopBar/HBoxContainer"]
+layout_mode = 2
+
+[node name="RoundLabel" type="Label" parent="CanvasLayer/HUD/TopBar/HBoxContainer/RoundContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+text = "ROUND"
+horizontal_alignment = 1
+
+[node name="RoundNumber" type="Label" parent="CanvasLayer/HUD/TopBar/HBoxContainer/RoundContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1"
+horizontal_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/HUD/TopBar/HBoxContainer"]
+layout_mode = 2
+
+[node name="TimerContainer" type="VBoxContainer" parent="CanvasLayer/HUD/TopBar/HBoxContainer"]
+layout_mode = 2
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer/HUD/TopBar/HBoxContainer/TimerContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+text = "TIME"
+horizontal_alignment = 1
+
+[node name="TimerValue" type="Label" parent="CanvasLayer/HUD/TopBar/HBoxContainer/TimerContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "20"
+horizontal_alignment = 1
+
+[node name="VSeparator2" type="VSeparator" parent="CanvasLayer/HUD/TopBar/HBoxContainer"]
+layout_mode = 2
+
+[node name="CoinContainer" type="VBoxContainer" parent="CanvasLayer/HUD/TopBar/HBoxContainer"]
+layout_mode = 2
+
+[node name="CoinLabel" type="Label" parent="CanvasLayer/HUD/TopBar/HBoxContainer/CoinContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+text = "COINS"
+horizontal_alignment = 1
+
+[node name="CoinValue" type="Label" parent="CanvasLayer/HUD/TopBar/HBoxContainer/CoinContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.9, 0.7, 0.2, 1)
+text = "300"
+horizontal_alignment = 1
+
+[node name="BottomBar" type="HBoxContainer" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+theme_override_constants/separation = 20
+
+[node name="PlayerHPContainer" type="VBoxContainer" parent="CanvasLayer/HUD/BottomBar"]
+layout_mode = 2
+custom_minimum_size = Vector2(300, 0)
+
+[node name="PlayerName" type="Label" parent="CanvasLayer/HUD/BottomBar/PlayerHPContainer"]
+layout_mode = 2
+text = "Player"
+
+[node name="PlayerHP" type="ProgressBar" parent="CanvasLayer/HUD/BottomBar/PlayerHPContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 30)
+theme_override_styles/fill = SubResource("StyleBoxFlat_2")
+max_value = 50.0
+value = 50.0
+show_percentage = false
+
+[node name="PlayerHPLabel" type="Label" parent="CanvasLayer/HUD/BottomBar/PlayerHPContainer"]
+layout_mode = 2
+text = "50 / 50"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="CanvasLayer/HUD/BottomBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EnemyHPContainer" type="VBoxContainer" parent="CanvasLayer/HUD/BottomBar"]
+layout_mode = 2
+custom_minimum_size = Vector2(300, 0)
+
+[node name="EnemyName" type="Label" parent="CanvasLayer/HUD/BottomBar/EnemyHPContainer"]
+layout_mode = 2
+text = "Enemy"
+horizontal_alignment = 2
+
+[node name="EnemyHP" type="ProgressBar" parent="CanvasLayer/HUD/BottomBar/EnemyHPContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 30)
+theme_override_styles/fill = SubResource("StyleBoxFlat_2")
+max_value = 50.0
+value = 50.0
+fill_mode = 1
+show_percentage = false
+
+[node name="EnemyHPLabel" type="Label" parent="CanvasLayer/HUD/BottomBar/EnemyHPContainer"]
+layout_mode = 2
+text = "50 / 50"
+horizontal_alignment = 1
+
+[node name="BranchPanel" parent="CanvasLayer/HUD" instance=ExtResource("3")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 70.0
+offset_right = 250.0
+offset_bottom = 600.0
+
+[node name="ActionButtons" type="VBoxContainer" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -100.0
+offset_right = -20.0
+offset_bottom = 100.0
+theme_override_constants/separation = 10
+
+[node name="RollButton" type="Button" parent="CanvasLayer/HUD/ActionButtons"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "Roll (20)"
+
+[node name="RandomButton" type="Button" parent="CanvasLayer/HUD/ActionButtons"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "Random (100)"
+
+[node name="LockButton" type="Button" parent="CanvasLayer/HUD/ActionButtons"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "Lock"
+
+[node name="ReadyButton" type="Button" parent="CanvasLayer/HUD/ActionButtons"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 50)
+theme_override_font_sizes/font_size = 18
+text = "READY"
+
+[node name="Market" parent="CanvasLayer" instance=ExtResource("2")]
+visible = false
+layout_mode = 1
+
+[node name="CardPreview" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2)
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
